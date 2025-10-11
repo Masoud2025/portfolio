@@ -1,7 +1,14 @@
 @import "tailwindcss";
 @import "@fontsource/vazir/index.css";
-
+:root {
+  font-size: 16px;
+}
 html,
 body {
   font-family: "Vazir", sans-serif;
+}
+@media (1250px >= width) {
+  :root {
+  font-size: 10px;
+}
 }

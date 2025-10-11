@@ -6,7 +6,7 @@ import { JSX } from "react";
 export default function Logo(): JSX.Element {
   return (
     <div>
-      <Image alt="" src={Logoimg} width={500} height={500} />
+      <Image alt="" src={Logoimg} width={48} height={48} />
     </div>
   );
 }

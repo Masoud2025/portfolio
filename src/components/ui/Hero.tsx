@@ -16,7 +16,7 @@ export default function Hero(): JSX.Element {
     hover:scale-110
   "
       >
-        <span className="relative z-10">مسعود جعفری</span>
+        <span className="relative z-10 text-amber-100 opacity-5">مسعود جعفری</span>
         {/* نور و موج */}
         <span
           className="
