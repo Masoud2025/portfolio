@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     }
 
     const text = `
-📩 پیام جدید:
+📩 پیام جدید از سایت پورتفولیو:
 👤 نام: ${data.name}
 📧 ایمیل: ${data.email}
 💬 پیام: ${data.message}

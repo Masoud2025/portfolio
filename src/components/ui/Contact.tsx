@@ -55,25 +55,25 @@ export default function Contact(): JSX.Element {
       >
         {/* اطلاعات تماس */}
         <div className="flex flex-col gap-6 w-full md:w-1/2 text-gray-300">
-          <h3 className="text-xl font-semibold text-indigo-400">
+          <h3 className="text-xl font-semibold text-indigo-400 text-right">
             راه‌های ارتباطی
           </h3>
 
-          <div className="flex items-center gap-3">
-            <Mail className="text-indigo-400 w-6 h-6" />
+          <div className="flex items-center gap-3 justify-end">
             <p className="text-sm">masoud@example.com</p>
+            <Mail className="text-indigo-400 w-6 h-6" />
           </div>
-          <div className="flex items-center gap-3">
-            <Phone className="text-indigo-400 w-6 h-6" />
+          <div className="flex items-center gap-3 justify-end">
             <p className="text-sm">+98 912 345 6789</p>
+            <Phone className="text-indigo-400 w-6 h-6" />
           </div>
-          <div className="flex items-center gap-3">
-            <MapPin className="text-indigo-400 w-6 h-6" />
+          <div className="flex items-center gap-3 justify-end">
             <p className="text-sm">ایران، تهران</p>
+            <MapPin className="text-indigo-400 w-6 h-6" />
           </div>
 
-          <p className="text-gray-400 text-sm leading-6 mt-4  text-right">
-            خوشحال می‌شم از طریق فرم روبه‌رو یا ایمیل با من در ارتباط باشید.
+          <p className="text-gray-400 text-sm leading-6 mt-4 text-right">
+            خوشحال می‌شوم از طریق فرم روبه‌رو یا ایمیل با من در ارتباط باشید.
             همیشه آماده همکاری در پروژه‌های جدید و جذاب هستم ✨
           </p>
         </div>
@@ -90,7 +90,7 @@ export default function Contact(): JSX.Element {
             onChange={handleChange}
             placeholder="نام شما"
             required
-            className="bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none transition  text-right"
+            className="bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none transition text-right"
           />
 
           <input
@@ -100,7 +100,7 @@ export default function Contact(): JSX.Element {
             onChange={handleChange}
             placeholder="ایمیل شما"
             required
-            className="bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none transition  text-right"
+            className="bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none transition text-right"
           />
 
           <textarea
@@ -109,8 +109,8 @@ export default function Contact(): JSX.Element {
             onChange={handleChange}
             placeholder="متن پیام..."
             required
-            rows={4}
-            className="bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 resize-none focus:border-indigo-500 outline-none transition  text-right"
+            rows={5}
+            className="bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 resize-none focus:border-indigo-500 outline-none transition text-right"
           />
 
           <button
