@@ -18,7 +18,7 @@ export default function Navbar(): JSX.Element {
         {/* بخش معرفی شخصی */}
         <div className="flex flex-col justify-center">
           <h1 className="text-3xl font-extrabold text-white tracking-wide">
-            مسعود جعفری
+            مســـــــــعود جــــــــــــــــــعفری
           </h1>
          
           <p className="text-gray-400 text-sm">
