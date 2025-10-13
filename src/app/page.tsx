@@ -12,14 +12,14 @@ import Skills from "@/components/ui/Skills";
 export default function Home() {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <Hero />
       <AboutMe />
-      <Skills/>
+      <Skills />
       {/* <Projects /> */}
       <PrjectsUI />
       <AuroraBackground />
-      <Contact/>
+      <Contact />
       <Footer />
     </div>
   );

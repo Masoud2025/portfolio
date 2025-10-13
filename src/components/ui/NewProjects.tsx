@@ -12,7 +12,7 @@ const projects = [
     id: 1,
     title: "پروژه اول",
     images: [demo1pic, demo2pic, demo3pic],
-    preview: "https://example.com",
+    preview: "/showcase/demo1",
   },
   {
     id: 2,

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { JSX } from "react";
-import profilePic from "../../../public/bg.jpg";
+import profilePic from "../../../public/photo_6005855913816214552_y.jpg";
 
 export default function AboutMe(): JSX.Element {
   return (
