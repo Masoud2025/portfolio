@@ -4,8 +4,8 @@
 import Image from "next/image";
 import { ExternalLink, GithubIcon } from "lucide-react";
 import demo1pic from "../../../public/demo1.png";
-import demo2pic from "../../../public/demo1.png";
-import demo3pic from "../../../public/demo1.png";
+import demo2pic from "../../../public/demo.png";
+import demo3pic from "../../../public/demo.png";
 
 const projects = [
   {

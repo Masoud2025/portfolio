@@ -1,53 +1,70 @@
 "use client";
-import pic from '../assets/images/placeholder.png'
+import Image from "next/image";
+import pcBanner from "../assets/images/pcbanner.jpg";
+import Headphone from "../assets/images/headphone.jpg";
+import MouseKeyboardImage from "../assets/images/keyboradmouse.jpg";
 import { JSX } from "react";
+
 export default function Hero(): JSX.Element {
   return (
-    <section className="relative flex flex-col items-center mt-[-2rem]">
-      {/* Top Banner */}
-      <div className="bg-blue-600 w-11/12 lg:w-[90%] h-20 md:h-28 mt-28 border-2 rounded-[4px] flex items-center justify-center ">
-        <h1 className="text-center text-white text-lg md:text-2xl">
-          به مدرسه بر میگردیم
+    <section className="relative flex flex-col items-center mt-[-6rem]">
+      {/* 🔹 Banner */}
+      <div className="bg-gradient-to-r from-blue-600 to-blue-500 w-11/12 lg:w-[90%] h-20 md:h-28 mt-28 rounded-md flex items-center justify-center shadow-md">
+        <h1 className="text-center text-white text-xl md:text-3xl font-bold tracking-wide">
+          به کامپیوتر برمی‌گردیم 💻
         </h1>
       </div>
 
-      {/* Cards Container */}
-      <div className="flex flex-col lg:flex-row justify-center items-start gap-8 mt-8 lg:mt-12 w-11/12 lg:w-[90%]">
-        {/* Large Card */}
-        <div className="bg-green-400 w-full lg:w-2/3 h-64 lg:h-[50vh] rounded-2xl flex items-center justify-center">
-          <span className="text-5xl lg:text-8xl font-bold">50</span>
-        </div>
-        {/* Small Cards Vertical Stack */}
-        <div className="flex flex-row lg:flex-col gap-4 w-full lg:w-1/3">
-          <div className="bg-amber-400 w-full h-32 lg:h-[24vh] rounded-2xl flex items-center justify-center">
-            <span className="text-3xl lg:text-5xl font-bold">40</span>
-          </div>
-          <div className="bg-yellow-500 w-full h-32 lg:h-[24vh] rounded-2xl flex items-center justify-center">
-            <span className="text-3xl lg:text-5xl font-bold">30</span>
-          </div>
-        </div>
-      </div>
-      <div className="w-full mt-8">
-        <svg
-          viewBox="0 0 500 200"
-          className="w-full h-auto"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="xMidYMid meet"
-        >
-          <defs>
-            <clipPath id="hero-clip">
-              <path d="M30,0H390A10,10 0,0,1 400,10V30A10,10 0,0,0 410,40H490A10,10 0,0,1 500,50V170A30,30 0,0,1 470,200H30A30,30 0,0,1 0,170V30A30,30 0,0,1 30,0Z" />
+      {/* 🔹 Cards Section */}
+      <div className="flex flex-col lg:flex-row justify-center items-stretch gap-8 mt-8 lg:mt-12 w-11/12 lg:w-[90%]">
+        {/* 🟢 Large Card */}
+        <div className="w-full lg:w-2/3 relative overflow-hidden rounded-2xl shadow-lg h-64 sm:h-80 lg:h-[55vh]">
+          <svg width="0" height="0">
+            <clipPath id="number-clip" clipPathUnits="objectBoundingBox">
+              <path d="M0.06,0 H0.78 Q0.8,0 0.8,0.05 V0.15 Q0.8,0.2 0.82,0.2 H0.98 Q1,0.2 1,0.25 V0.85 Q1,1 0.94,1 H0.06 Q0,1 0,0.85 V0.15 Q0,0 0.06,0 Z" />
             </clipPath>
-          </defs>
+          </svg>
 
-          <image
-            href={pic.src}
-            width="500"
-            height="200"
-            clipPath="url(#hero-clip)"
-            preserveAspectRatio="xMidYMid slice"
+          <Image
+            src={pcBanner}
+            alt="PC Banner"
+            fill
+            className="object-cover transition-transform duration-700 hover:scale-105"
+            style={{ clipPath: "url(#number-clip)" }}
           />
-        </svg>
+          <div className="absolute bottom-6 left-6 bg-white/80 text-gray-900 px-4 py-2 rounded-lg text-lg md:text-2xl font-bold shadow-sm backdrop-blur-sm">
+            تا ۵۰٪ تخفیف روی محصولات دیجیتال ⚡
+          </div>
+        </div>
+
+        {/* 🟡 Small Cards */}
+        <div className="flex flex-col gap-4 w-full lg:w-1/3">
+          {/* Keyboard + Mouse */}
+          <div className="relative rounded-2xl overflow-hidden shadow-md group h-48 sm:h-64 lg:flex-1">
+            <Image
+              src={MouseKeyboardImage}
+              alt="Keyboard and Mouse"
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute bottom-3 left-3 bg-white/80 text-gray-900 px-3 py-1 rounded-md text-sm md:text-base font-semibold backdrop-blur-sm">
+              ست کیبورد و ماوس 🎮
+            </div>
+          </div>
+
+          {/* Headphone */}
+          <div className="relative rounded-2xl overflow-hidden shadow-md group h-48 sm:h-64 lg:flex-1">
+            <Image
+              src={Headphone}
+              alt="Headphone"
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute bottom-3 left-3 bg-white/80 text-gray-900 px-3 py-1 rounded-md text-sm md:text-base font-semibold backdrop-blur-sm">
+              هدفون‌های حرفه‌ای 🎧
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -12,7 +12,7 @@ import Skills from "@/components/ui/Skills";
 export default function Home() {
   return (
     <div>
-      {/* <Navbar /> */}
+      <Navbar />
       <Hero />
       <AboutMe />
       <Skills />

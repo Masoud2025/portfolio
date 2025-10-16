@@ -24,7 +24,7 @@ const projects: Project[] = [
     id: 2,
     title: "پروژه دوم",
     description: "تمرکز روی UX/UI حرفه‌ای",
-    image: "/bg2.jpg",
+    image: "/bg23.jpg",
     link: "#",
   },
   {
@@ -81,11 +81,10 @@ function DesktopGrid({ projects }: { projects: Project[] }) {
   return (
     <section className="py-20 px-5 max-w-[1400px] mx-auto">
       <h2 className="text-4xl font-bold text-center mb-12 text-white">
-        کارهای من ({projects.length})
-        ظاهر سایت رو عوض کن
-        این پس زمینه متحرک رو بزار برای ارور
-        <h1 className="opacity-5 font-extrabold text-[90px]" >404</h1> 
-         شیشه ای
+        کارهای من ({projects.length}) ظاهر سایت رو عوض کن این پس زمینه متحرک رو
+        بزار برای ارور
+        <h1 className="opacity-5 font-extrabold text-[90px]">404</h1>
+        شیشه ای
       </h2>
 
       <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
