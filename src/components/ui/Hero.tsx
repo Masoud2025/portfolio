@@ -1,89 +1,111 @@
 "use client";
 
-import { JSX } from "react";
-import { motion } from "framer-motion";
-import { Code, Terminal, Braces, Cpu } from "lucide-react";
+import { JSX, useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import itguy from "../../../public/ITGUY-removebg-preview.png";
+
+const codeSnippets = [
+  { text: "<h1>Hello</h1>", color: "#e06c75" },
+  { text: "body { margin: 0; }", color: "#98c379" },
+  { text: "console.log('Hi')", color: "#61afef" },
+  { text: "const x = 10;", color: "#c678dd" },
+  { text: "<div className='app'></div>", color: "#e5c07b" },
+  { text: "function greet() {}", color: "#61afef" },
+  { text: "color: red;", color: "#98c379" },
+  { text: "let arr = [1,2,3];", color: "#c678dd" },
+];
 
 export default function Hero(): JSX.Element {
-  return (
-    <section className="relative flex flex-col justify-center items-center h-[100vh] overflow-hidden">
-      {/* نوشته‌های بزرگ محو پس‌زمینه */}
-      <span className="absolute text-amber-100 opacity-5 font-extrabold text-[30vw] sm:text-[25vw] md:text-[20vw] lg:text-[15vw] right-[-10vw] top-[10%] select-none leading-none">
-        مســـــــــعود
-      </span>
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [radius, setRadius] = useState(220);
 
-      <span className="absolute text-amber-100 opacity-5 font-extrabold text-[28vw] sm:text-[23vw] md:text-[18vw] lg:text-[14vw] left-[-5vw] bottom-[10%] select-none leading-none">
-        جــــــــــــعفری
-      </span>
-      {/* محتوای مرکزی */}
-      <motion.div
-        className="relative z-10 text-center flex flex-col items-center gap-8 px-4"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <div className="flex items-center gap-4 text-gray-700 dark:text-gray-200">
-          <motion.div
-            animate={{ rotate: [0, 10, -10, 0] }}
-            transition={{ repeat: Infinity, duration: 4 }}
-          >
-            <Code size={38} className="text-[#4F39F6]" />
-          </motion.div>
-          <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl font-extrabold"
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1.2 }}
-          >
-            Hello, I’m <span className="text-[#4F39F6]">Masoud</span>
-          </motion.h1>
-          <motion.div
-            animate={{ rotate: [0, -10, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 4 }}
-          >
-            <Terminal size={38} className="text-[#4F39F6]" />
-          </motion.div>
+  useEffect(() => {
+    // Adjust radius based on screen size
+    const updateRadius = () => {
+      if (window.innerWidth < 640) {
+        setRadius(120); // Mobile
+      } else if (window.innerWidth < 1024) {
+        setRadius(160); // Tablet
+      } else {
+        setRadius(220); // Desktop
+      }
+    };
+
+    updateRadius();
+    window.addEventListener("resize", updateRadius);
+    return () => window.removeEventListener("resize", updateRadius);
+  }, []);
+
+  useEffect(() => {
+    let angle = 0;
+
+    const animate = () => {
+      if (containerRef.current) {
+        const children = Array.from(
+          containerRef.current.children
+        ) as HTMLElement[];
+        const n = children.length;
+
+        children.forEach((child, i) => {
+          const theta = (i / n) * 2 * Math.PI + angle;
+          const phi = Math.PI / 6;
+
+          const x = radius * Math.cos(theta) * Math.cos(phi);
+          const y = radius * Math.sin(phi);
+          const z = radius * Math.sin(theta) * Math.cos(phi);
+
+          const scale = 0.5 + (z + radius) / (2 * radius);
+          child.style.transform = `translate3d(${x}px, ${y}px, ${z}px) scale(${scale})`;
+          child.style.zIndex = `${Math.floor(scale * 1000)}`;
+          child.style.opacity = `${0.5 + scale / 2}`;
+        });
+
+        angle += 0.002;
+      }
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+  }, [radius]);
+
+  return (
+    <section className="relative flex flex-col justify-center items-center min-h-screen w-full overflow-hidden px-4 sm:px-6 lg:px-8 perspective-[1200px]">
+      {/* Background Text - Responsive positioning */}
+      <h1 className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-amber-100 font-extrabold text-center whitespace-nowrap pointer-events-none">
+        برنــــــــــــامه نویـــــــــــــــس
+      </h1>
+
+      {/* Main Content Container */}
+      <div className="relative flex justify-center items-end w-full max-w-7xl h-full">
+        {/* Image Container - Bigger and touching bottom */}
+        <div className="relative md:mb-36  w-[300px] h-[400px] sm:w-[400px] sm:h-[400px] md:w-[550px] md:h-[550px] lg:w-[700px] lg:h-[700px] xl:w-[800px] xl:h-[800px]">
+          <Image
+            src={itguy}
+            alt="Masoud"
+            fill
+            className="object-contain object-bottom relative z-20"
+          />
         </div>
 
-        {/* متن زیر عنوان */}
-        <motion.p
-          className="text-lg sm:text-xl text-gray-500 dark:text-gray-400 font-light"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
+        {/* Code Snippets Orbit - Positioned on head area */}
+        <div
+          ref={containerRef}
+          className="absolute top-[-5%] left-[44%] sm:top-[1%] md:top-[1%]  -translate-x-1/2 w-0 h-0 pointer-events-none z-30"
         >
-          Frontend Developer • JavaScript • React • Next.js
-        </motion.p>
-
-        {/* آیکون‌های مرتبط با برنامه‌نویسی */}
-        <motion.div
-          className="flex gap-10 mt-6 text-[#4F39F6]"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-        >
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-          >
-            <Braces size={40} />
-          </motion.div>
-
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2.5 }}
-          >
-            <Cpu size={40} />
-          </motion.div>
-
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ repeat: Infinity, duration: 3 }}
-          >
-            <Code size={40} />
-          </motion.div>
-        </motion.div>
-      </motion.div>
+          {codeSnippets.map((snippet, idx) => (
+            <div
+              key={idx}
+              className="absolute font-mono font-bold text-xs sm:text-sm md:text-base lg:text-lg p-1 rounded-md select-none"
+              style={{
+                transform: "translate3d(0,0,0)",
+                color: snippet.color,
+              }}
+            >
+              {snippet.text}
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
