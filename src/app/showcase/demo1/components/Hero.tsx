@@ -1,70 +1,96 @@
 "use client";
-import Image from "next/image";
-import pcBanner from "../assets/images/pcbanner.jpg";
-import Headphone from "../assets/images/headphone.jpg";
-import MouseKeyboardImage from "../assets/images/keyboradmouse.jpg";
-import { JSX } from "react";
 
-export default function Hero(): JSX.Element {
+import Image from "next/image";
+import useEmblaCarousel from "embla-carousel-react";
+import { useEffect, useState, useCallback } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import pcBanner from "../assets/images/banner1.webp";
+import Headphone from "../assets/images/banner2.webp";
+import MouseKeyboardImage from "../assets/images/banner3.webp";
+
+export default function HeroCarousel() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 40 });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const slides = [
+    { src: pcBanner, alt: "PC Banner" },
+    { src: MouseKeyboardImage, alt: "Keyboard and Mouse" },
+    { src: Headphone, alt: "Headphone" },
+  ];
+
+  const scrollPrev = useCallback(
+    () => emblaApi && emblaApi.scrollPrev(),
+    [emblaApi]
+  );
+  const scrollNext = useCallback(
+    () => emblaApi && emblaApi.scrollNext(),
+    [emblaApi]
+  );
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on("select", onSelect);
+
+    const interval = setInterval(() => emblaApi.scrollNext(), 8000);
+    return () => {
+      clearInterval(interval);
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi]);
+
   return (
-    <section className="relative flex flex-col items-center mt-[-6rem]">
-      {/* 🔹 Banner */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-500 w-11/12 lg:w-[90%] h-20 md:h-28 mt-28 rounded-md flex items-center justify-center shadow-md">
-        <h1 className="text-center text-white text-xl md:text-3xl font-bold tracking-wide">
-          به کامپیوتر برمی‌گردیم 💻
-        </h1>
+    <section
+      className="embla group relative w-full h-[30vh] md:h-[40vh] overflow-hidden  shadow-lg "
+      ref={emblaRef}
+    >
+      {/* Slides */}
+      <div className="embla__container flex h-full ">
+        {slides.map((slide, index) => (
+          <div
+            className="embla__slide relative flex-[0_0_100%] h-full"
+            key={index}
+          >
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              priority
+              className="object-cover"
+            />
+            <div className="absolute inset-0  flex items-center justify-center">
+             
+            </div>
+          </div>
+        ))}
       </div>
 
-      {/* 🔹 Cards Section */}
-      <div className="flex flex-col lg:flex-row justify-center items-stretch gap-8 mt-8 lg:mt-12 w-11/12 lg:w-[90%]">
-        {/* 🟢 Large Card */}
-        <div className="w-full lg:w-2/3 relative overflow-hidden rounded-2xl shadow-lg h-64 sm:h-80 lg:h-[55vh]">
-          <svg width="0" height="0">
-            <clipPath id="number-clip" clipPathUnits="objectBoundingBox">
-              <path d="M0.06,0 H0.78 Q0.8,0 0.8,0.05 V0.15 Q0.8,0.2 0.82,0.2 H0.98 Q1,0.2 1,0.25 V0.85 Q1,1 0.94,1 H0.06 Q0,1 0,0.85 V0.15 Q0,0 0.06,0 Z" />
-            </clipPath>
-          </svg>
+      {/* Navigation Arrows — hidden until hover */}
+      <button
+        onClick={scrollPrev}
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 text-white p-2 rounded-full backdrop-blur-md opacity-0 group-hover:opacity-100 hover:bg-white/50 transition-all duration-300"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
 
-          <Image
-            src={pcBanner}
-            alt="PC Banner"
-            fill
-            className="object-cover transition-transform duration-700 hover:scale-105"
-            style={{ clipPath: "url(#number-clip)" }}
+      <button
+        onClick={scrollNext}
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 text-white p-2 rounded-full backdrop-blur-md opacity-0 group-hover:opacity-100 hover:bg-white/50 transition-all duration-300"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
+
+      {/* Dots Indicator */}
+      <div className="absolute bottom-4 w-full flex justify-center gap-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => emblaApi && emblaApi.scrollTo(index)}
+            className={`w-3 h-3 rounded-full transition-all ${
+              index === selectedIndex ? "bg-white scale-125" : "bg-white/50"
+            }`}
           />
-          <div className="absolute bottom-6 left-6 bg-white/80 text-gray-900 px-4 py-2 rounded-lg text-lg md:text-2xl font-bold shadow-sm backdrop-blur-sm">
-            تا ۵۰٪ تخفیف روی محصولات دیجیتال ⚡
-          </div>
-        </div>
-
-        {/* 🟡 Small Cards */}
-        <div className="flex flex-col gap-4 w-full lg:w-1/3">
-          {/* Keyboard + Mouse */}
-          <div className="relative rounded-2xl overflow-hidden shadow-md group h-48 sm:h-64 lg:flex-1">
-            <Image
-              src={MouseKeyboardImage}
-              alt="Keyboard and Mouse"
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <div className="absolute bottom-3 left-3 bg-white/80 text-gray-900 px-3 py-1 rounded-md text-sm md:text-base font-semibold backdrop-blur-sm">
-              ست کیبورد و ماوس 🎮
-            </div>
-          </div>
-
-          {/* Headphone */}
-          <div className="relative rounded-2xl overflow-hidden shadow-md group h-48 sm:h-64 lg:flex-1">
-            <Image
-              src={Headphone}
-              alt="Headphone"
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <div className="absolute bottom-3 left-3 bg-white/80 text-gray-900 px-3 py-1 rounded-md text-sm md:text-base font-semibold backdrop-blur-sm">
-              هدفون‌های حرفه‌ای 🎧
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import CategoryCircles from "./components/CategoryCircles";
 import Hero from "./components/Hero";
 import Navbars from "./components/listitesm";
 import MoblieNavbr from "./components/MoblieNavbar/MobileNavbar";
@@ -13,9 +14,10 @@ export default function Project1Demo() {
       <Navbar />
       <MoblieNavbr />
       <Hero />
+      <CategoryCircles />
       <CartProvider>
         <Products />
-        <Navbars/>
+        <Navbars />
       </CartProvider>
     </section>
   );

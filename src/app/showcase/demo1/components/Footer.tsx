@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Enamad from "../assets/images/enamad.png";
 import Neshanmeli from "../assets/images/Nehanmeli.jpg";
+import Namads from "../../../../../public/AllNamadsTest.png";
 import { ArrowUp } from "lucide-react";
 
 export default function Footer(): JSX.Element {
@@ -83,10 +84,10 @@ export default function Footer(): JSX.Element {
               </Link>
               <Link href="https://namad.ir" target="_blank">
                 <Image
-                  src={Neshanmeli}
+                  src={Namads}
                   alt="Neshanmeli"
-                  width={80}
-                  height={80}
+                  width={1900}
+                  height={800}
                   className="rounded-md border border-gray-200 object-contain"
                 />
               </Link>
