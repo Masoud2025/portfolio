@@ -26,32 +26,32 @@ export default function Links() {
   let [megaMenu, setMegaMenu] = useState(true);
   return (
     <div>
-      <ul className=" hidden md:blcok md:flex flex-row-reverse gap-12 mr-10 mt-4 hover:cursor-pointer">
+      <ul className=" hidden md:blcok md:flex flex-row-reverse gap-12 mr-10 mt-2 hover:cursor-pointer">
         <li className="flex ">
           <button onMouseEnter={() => setMegaMenu(megaMenu == false)}>
             دسته بندی کالاها
           </button>
-          <Menu className="ml-2" />
+          <Menu className="ml-2 mt-0.5" color="#44444E" size={18} />
         </li>
         <li className="flex ">
           سوپر مارکت
-          <SandwichIcon className="ml-2" />
+          <SandwichIcon className="ml-2 mt-0.5" color="#44444E" size={18} />
         </li>
         <li className="flex ">
           شگفت انگیز ها
-          <BadgePercent className="ml-2" />
+          <BadgePercent className="ml-2" color="#44444E" size={18} />
         </li>
         <li className="flex ">
           فروشگاه
-          <Store className="ml-2" />
+          <Store className="ml-2" color="#44444E" size={18} />
         </li>
         <li className="flex ">
           بایگانی نوشته ها
-          <BookOpenText className="ml-2" />
+          <BookOpenText className="ml-2" color="#44444E"size={18}  />
         </li>
         <li className="flex ">
           گوشی موبایل
-          <Smartphone className="ml-2" />
+          <Smartphone className="ml-2" color="#44444E" size={18} />
         </li>
       </ul>
       {megaMenu ? (

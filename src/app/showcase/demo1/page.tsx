@@ -7,7 +7,7 @@ import MoblieNavbr from "./components/MoblieNavbar/MobileNavbar";
 import Navbar from "./components/Navbar";
 import Products from "./components/products/Products";
 import { CartProvider } from "./components/store/cartContext";
-
+import  Product from "./components/products/ProductsRow"
 export default function Project1Demo() {
   return (
     <section className="">
@@ -15,6 +15,7 @@ export default function Project1Demo() {
       <MoblieNavbr />
       <Hero />
       <CategoryCircles />
+      <Product/>
       <CartProvider>
         <Products />
         <Navbars />

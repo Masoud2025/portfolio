@@ -5,7 +5,7 @@ import { LogIn, ShoppingCart } from "lucide-react";
 
 export default function Shopping(): JSX.Element {
   return (
-    <div className="hidden md:flex items-center gap-4 mt-5 ml09">
+    <div className="hidden md:flex items-center gap-4 mt-5 ml-11">
       <button className="flex items-center gap-2 border-2 border-red-500 px-4 py-2 rounded-2xl text-red-600 font-medium transition-all duration-300 hover:bg-red-500 hover:text-white hover:shadow-md">
         <span>ثبت‌نام | ورود</span>
         <LogIn className="w-5 h-5" />
