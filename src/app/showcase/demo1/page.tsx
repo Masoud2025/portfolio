@@ -7,19 +7,40 @@ import MoblieNavbr from "./components/MoblieNavbar/MobileNavbar";
 import Navbar from "./components/Navbar";
 import Products from "./components/products/Products";
 import { CartProvider } from "./components/store/cartContext";
-import  Product from "./components/products/ProductsRow"
+import Product from "./components/products/ProductsRow";
+import TopBannerGif from "./components/Tpbannergif";
+import GridCategory from "./components/categoryGrid";
+import DigitalProducts from "./components/DigitalProdcuts";
+import TrustedBrands from "./components/TrustedBrands";
+import HomeKitchenGrids from "./components/Home_kitchenGrids";
+import Products_Banner from "./components/ProductBanner";
+import GridCards_gif from "./components/GridGifs";
 export default function Project1Demo() {
   return (
     <section className="">
+      <TopBannerGif />
       <Navbar />
       <MoblieNavbr />
       <Hero />
       <CategoryCircles />
-      <Product/>
-      <CartProvider>
-        <Products />
-        <Navbars />
-      </CartProvider>
+      <GridCategory />
+      <DigitalProducts />
+      <TrustedBrands />
+      <HomeKitchenGrids />
+      <Products_Banner />
+      <DigitalProducts />
+      <GridCards_gif />
+      <DigitalProducts />
+      <Products_Banner />
+      <br />
+      <GridCards_gif />
+      <DigitalProducts />
+
+      {/* <Product /> */}
+      {/* <CartProvider> */}
+      {/* <Products /> */}
+      {/* <Navbars /> */}
+      {/* </CartProvider> */}
     </section>
   );
 }

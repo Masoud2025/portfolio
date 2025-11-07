@@ -64,25 +64,6 @@ export default function ProjectsUI() {
       <h1 className="text-right text-4xl font-extrabold mb-16 mr-12   ">
         نمونه‌کارها
       </h1>
-<h1 >
-  همه دمو ها+
-  فروشگاهی|
-  فشن |
-  3 بعدی|
-  فول اتک |
-  آموزشی|
-  الکترونیک|
-  فشن|
-  شرکتی|
-  خوراکی  |
-</h1>
-<h1>
-  +
-  قابلیت لایک کردن واسه هر پر.ژه❤️
-</h1>
-<h1>
-  دکمه توضیحات بیشتر
-</h1>
       <div className="flex flex-wrap justify-center items-start gap-8 w-full">
         {projects.map((project) => (
           <div
