@@ -6,7 +6,7 @@ import { ExternalLink, GithubIcon } from "lucide-react";
 import demo1pic from "../../../public/demo1pic.png";
 import demo2pic from "../../../public/demo2pic.png";
 import demo3pic from "../../../public/demo.png";
-
+import hastivademopic from "../../../public/demohastiva.png";
 const projects = [
   {
     id: 1,
@@ -23,7 +23,7 @@ const projects = [
   {
     id: 3,
     title: "پروژه سوم",
-    images: [demo3pic, demo1pic, demo2pic],
+    images: [hastivademopic, demo1pic, demo2pic],
     preview: "https://example.com/",
   },
   {
