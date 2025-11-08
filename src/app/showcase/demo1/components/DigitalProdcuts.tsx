@@ -45,15 +45,8 @@ export default function Digital_products(): JSX.Element {
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
 
-  const scrollPrev = useCallback(
-    () => emblaApi && emblaApi.scrollPrev(),
-    [emblaApi]
-  );
-
-  const scrollNext = useCallback(
-    () => emblaApi && emblaApi.scrollNext(),
-    [emblaApi]
-  );
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -66,7 +59,6 @@ export default function Digital_products(): JSX.Element {
     onSelect();
     emblaApi.on("select", onSelect);
     emblaApi.on("reInit", onSelect);
-
     return () => {
       emblaApi.off("select", onSelect);
       emblaApi.off("reInit", onSelect);
@@ -75,50 +67,48 @@ export default function Digital_products(): JSX.Element {
 
   return (
     <div className="w-full py-10 bg-white" dir="rtl">
-      <h1 className="text-right text-2xl font-bold mr-[10rem] mb-8 text-gray-800">
+      <h1 className="text-right text-2xl font-bold mr-8 sm:mr-16 mb-8 text-gray-800">
         محصولات دیجیتال
       </h1>
 
-      <div className="relative w-[85%] mx-auto rounded-2xl p-6">
-        {/* Navigation buttons */}
+      <div className="relative w-[90%] sm:w-[85%] mx-auto rounded-2xl p-2 sm:p-6">
+        {/* دکمه‌های حرکت */}
         <button
           onClick={scrollPrev}
           disabled={!canScrollPrev}
-          className="absolute left-3 top-1/2 -translate-y-1/2 bg-white border border-gray-300 hover:bg-gray-100 shadow-md rounded-full p-2 z-10 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
-          aria-label="Previous"
+          className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 bg-white border border-gray-300 hover:bg-gray-100 shadow-md rounded-full p-2 z-10 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
         >
           ❮
         </button>
         <button
           onClick={scrollNext}
           disabled={!canScrollNext}
-          className="absolute right-3 top-1/2 -translate-y-1/2 bg-white border border-gray-300 hover:bg-gray-100 shadow-md rounded-full p-2 z-10 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
-          aria-label="Next"
+          className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 bg-white border border-gray-300 hover:bg-gray-100 shadow-md rounded-full p-2 z-10 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
         >
           ❯
         </button>
 
-        {/* Carousel */}
+        {/* اسلایدر */}
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-4">
+          <div className="flex gap-3 sm:gap-4">
             {products.map((p, i) => (
               <div
                 key={i}
-                className="flex-[0_0_20%] min-w-0 bg-gray-50 hover:bg-white transition-all duration-300 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md p-4 flex flex-col items-center justify-between"
+                className="flex-[0_0_70%] sm:flex-[0_0_45%] md:flex-[0_0_30%] lg:flex-[0_0_20%] bg-gray-50 hover:bg-white transition-all duration-300 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md p-4 flex flex-col items-center justify-between"
               >
-                <div className="relative w-40 h-40 mb-3">
+                <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 mb-3">
                   <Image
                     alt={p.name}
                     src={p.img}
                     fill
                     className="object-contain rounded-lg"
-                    sizes="160px"
+                    sizes="(max-width: 640px) 96px, (max-width: 768px) 128px, 160px"
                   />
                 </div>
-                <h2 className="text-center text-gray-800 text-sm font-semibold leading-6">
+                <h2 className="text-center text-gray-800 text-sm sm:text-base font-semibold leading-6">
                   {p.name}
                 </h2>
-                <p className="text-center text-[#0d9488] font-bold mt-2">
+                <p className="text-center text-[#0d9488] font-bold mt-2 text-sm sm:text-base">
                   {p.price}
                 </p>
               </div>

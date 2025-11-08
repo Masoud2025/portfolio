@@ -44,7 +44,7 @@ export default function ProductsPage(): JSX.Element {
                 {item.price.toLocaleString("fa-IR")} تومان
               </span>
               <button
-                onClick={() => addToCart(item)}
+                onClick={() => addToCart({ ...item, quantity: 1 })}
                 className="bg-amber-500 text-white px-5 py-2 rounded-lg hover:bg-amber-600 transition"
               >
                 افزودن به سبد خرید

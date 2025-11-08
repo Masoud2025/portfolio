@@ -15,6 +15,7 @@ import TrustedBrands from "./components/TrustedBrands";
 import HomeKitchenGrids from "./components/Home_kitchenGrids";
 import Products_Banner from "./components/ProductBanner";
 import GridCards_gif from "./components/GridGifs";
+import Blog from "./components/blogs";
 export default function Project1Demo() {
   return (
     <section className="">
@@ -35,6 +36,7 @@ export default function Project1Demo() {
       <br />
       <GridCards_gif />
       <DigitalProducts />
+      <Blog/>
 
       {/* <Product /> */}
       {/* <CartProvider> */}
