@@ -3,8 +3,8 @@
 
 import Image from "next/image";
 import { ExternalLink, GithubIcon } from "lucide-react";
-import demo1pic from "../../../public/demo1.png";
-import demo2pic from "../../../public/demo.png";
+import demo1pic from "../../../public/demo1pic.png";
+import demo2pic from "../../../public/demo2pic.png";
 import demo3pic from "../../../public/demo.png";
 
 const projects = [
@@ -18,7 +18,7 @@ const projects = [
     id: 2,
     title: "پروژه دوم",
     images: [demo2pic, demo3pic, demo1pic],
-    preview: "/showcase/demo2",
+    preview: "/showcase/demo5",
   },
   {
     id: 3,
