@@ -1,5 +1,6 @@
 "use client";
 
+import PersianDate from "@/app/showcase/demo2/components/ShamsyDate";
 import Link from "next/link";
 import { JSX } from "react";
 
@@ -20,10 +21,8 @@ export default function Navbar(): JSX.Element {
           <h1 className="text-3xl font-extrabold text-white tracking-wide">
             مســـــــــعود جــــــــــــــــــعفری
           </h1>
-         
-          <p className="text-gray-400 text-sm">
-             توسعه دهنده وب 
-          </p>
+
+          <p className="text-gray-400 text-sm">توسعه دهنده وب</p>
         </div>
 
         {/* منو لینک‌ها */}
