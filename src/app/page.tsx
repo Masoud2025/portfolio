@@ -10,11 +10,13 @@ import LeftHalft from "@/components/ui/LeftHalft";
 import PrjectsUI from "@/components/ui/NewProjects";
 // import Hero from "@/components/ui/Hero";
 import Projects from "@/components/ui/Projects";
+import ResponsiveSimulator from "@/components/ui/ResponsiveSimulator";
 import Skills from "@/components/ui/Skills";
 
 export default function Home() {
   return (
     <div>
+      <ResponsiveSimulator />
       <Navbar />
       <Hero />
       <AboutMe />
@@ -24,6 +26,7 @@ export default function Home() {
       <AuroraBackground />
       <Contact />
       <Footer />
+
       {/* <Sidebar /> */}
       {/* <SideProjects /> */}
       {/* <LeftHalft /> */}
