@@ -16,7 +16,7 @@ export default function AuroraBackground() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    const colors = ["#ff6ec7", "#6ec1ff", "#a6ff6e"];
+    const colors = ["#FC98D7", "#6ec1ff", "#a6ff6e"];
     const particles = Array.from({ length: 100 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,

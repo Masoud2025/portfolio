@@ -20,7 +20,7 @@ const Projects = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // smooth movement and phyisical
+  // smooth movement and physical
   const springX = useSpring(mouseX, { stiffness: 200, damping: 25 });
   const springY = useSpring(mouseY, { stiffness: 200, damping: 25 });
 

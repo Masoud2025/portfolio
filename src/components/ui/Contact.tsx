@@ -42,7 +42,7 @@ export default function Contact(): JSX.Element {
       className="w-full flex flex-col items-center mt-24 mb-20 px-4"
     >
       <h2 className="text-3xl font-bold text-white mb-10 border-b border-gray-700 pb-2">
-        تماس با من
+        راه ارتباطی
       </h2>
 
       <div

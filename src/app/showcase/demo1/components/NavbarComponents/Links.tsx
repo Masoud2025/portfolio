@@ -92,7 +92,7 @@ export default function Links() {
 
   return (
     <div>
-      <ul className="hidden md:block md:flex flex-row-reverse gap-12 mr-10 mt-2 hover:cursor-pointer text-[#666D74]">
+      <ul className="hidden md:block md:flex flex-row-reverse gap-12 mr-8  hover:cursor-pointer text-[#666D74]">
         <li className="flex">
           <button
             onMouseEnter={() => setMegaMenuOpen(true)}
