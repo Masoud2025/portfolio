@@ -16,16 +16,16 @@ import Skills from "@/components/ui/Skills";
 export default function Home() {
   return (
     <div>
-      <ResponsiveSimulator />
-      <Navbar />
-      <Hero />
-      <AboutMe />
-      <Skills />
+      {/* <ResponsiveSimulator /> */}
+      {/* <Navbar /> */}
+      {/* <Hero /> */}
+      {/* <AboutMe /> */}
+      {/* <Skills /> */}
       {/* <Projects /> */}
-      <PrjectsUI />
-      <AuroraBackground />
-      <Contact />
-      <Footer />
+      {/* <PrjectsUI /> */}
+      {/* <AuroraBackground /> */}
+      {/* <Contact /> */}
+      {/* <Footer /> */}
 
       {/* <Sidebar /> */}
       {/* <SideProjects /> */}

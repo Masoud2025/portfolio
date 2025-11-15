@@ -11,19 +11,19 @@ const projects = [
   {
     id: 1,
     title: "پروژه اول",
-    images: [demo1pic, demo2pic, demo3pic],
+    images: [demo1pic],
     preview: "/showcase/demo1",
   },
   {
     id: 2,
     title: "پروژه دوم",
-    images: [demo2pic, demo3pic, demo1pic],
+    images: [demo2pic],
     preview: "/showcase/demo5",
   },
   {
     id: 3,
     title: "پروژه سوم",
-    images: [hastivademopic, demo1pic, demo2pic],
+    images: [hastivademopic],
     preview: "https://example.com/",
   },
   {
@@ -63,6 +63,22 @@ export default function ProjectsUI() {
     <section className="min-h-screen text-white py-16">
       <h1 className="text-right text-4xl font-extrabold mb-16 mr-12   ">
         نمونه‌کارها
+      </h1>
+      <h1 className="text-right text-4xl font-extrabold mb-16 mr-12   ">
+        Figma Design ----ui---ux--To---------- Code
+      </h1>
+      <h1 className="text-right text-4xl font-extrabold mb-16 mr-12   ">
+        Websites Clones
+      </h1>
+      <h1 className="text-right text-4xl font-extrabold mb-16 mr-12   ">
+        API --- integration
+      </h1>
+      <h1 className="text-right text-4xl font-extrabold mb-16 mr-12   ">
+        CRUD ACTIONS
+      </h1>
+      <h1 className="text-right text-4xl font-extrabold mb-16 mr-12   ">
+        STATE --- integration 
+        DATA HANDLING
       </h1>
       <div className="flex flex-wrap justify-center items-start gap-8 w-full">
         {projects.map((project) => (
