@@ -34,23 +34,45 @@ export default function Blog() {
   ];
 
   return (
-    <div className=" w-[90%] md:w-[900px] mx-auto mt-6 rounded-[30px]  p-6">
-      <h2 className="text-3xl font-bold text-white mb-6 text-center">Blog</h2>
+    <div className="w-[90%] md:w-[900px] mx-auto mt-10 p-4">
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {/* Title */}
+      <h2 className="text-4xl font-black text-center mb-10 
+        bg-gradient-to-r from-[#ff8a00] to-[#e52e71] 
+        text-transparent bg-clip-text">
+        Blog & Articles
+      </h2>
+
+      {/* Posts Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
         <AnimatePresence>
           {posts.map((post, idx) => (
             <motion.div
               key={post.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 30 }}
-              transition={{ duration: 0.5, delay: idx * 0.2 }}
-              className="bg-[#2B2B2C] rounded-lg shadow-md p-4 cursor-pointer hover:scale-105 transition-transform duration-300"
+              exit={{ opacity: 0, y: 40 }}
+              transition={{ duration: 0.5, delay: idx * 0.15 }}
+              className="
+                rounded-2xl p-6 cursor-pointer 
+                bg-[#1b1b1c]/60 border border-gray-700 
+                backdrop-blur-xl
+                hover:shadow-[0_0_20px_#ff880080] 
+                hover:border-[#ff8a00]
+                transition-all duration-300 hover:scale-[1.03]
+              "
             >
-              <h3 className="text-white font-semibold text-xl mb-2">{post.title}</h3>
-              <p className="text-gray-400 text-sm mb-2">{post.date}</p>
-              <p className="text-gray-300">{post.summary}</p>
+              <h3 className="text-white font-semibold text-2xl mb-3">
+                {post.title}
+              </h3>
+
+              <p className="text-gray-400 text-sm mb-3">
+                {post.date}
+              </p>
+
+              <p className="text-gray-300 leading-relaxed">
+                {post.summary}
+              </p>
             </motion.div>
           ))}
         </AnimatePresence>

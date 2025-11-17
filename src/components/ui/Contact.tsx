@@ -41,15 +41,13 @@ export default function Contact(): JSX.Element {
       id="contact"
       className="w-full flex flex-col items-center mt-24 mb-20 px-4"
     >
-      <h2 className="text-3xl font-bold text-white mb-10 border-b border-gray-700 pb-2">
-        راه ارتباطی
-      </h2>
+
 
       <div
         className="
           w-full max-w-[950px] flex flex-col md:flex-row items-center justify-between
-          bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900
-          border border-gray-700 shadow-2xl rounded-[25px] p-8 gap-8
+          
+        border-gray-700 shadow-2xl rounded-[25px] p-8 gap-8
           backdrop-blur-lg
         "
       >
@@ -115,7 +113,7 @@ export default function Contact(): JSX.Element {
 
           <button
             type="submit"
-            className="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-xl shadow-lg transition"
+            className="flex items-center justify-center gap-2 bg-[#2F6D4D] hover:cursor-pointer hover:bg-green-700 text-white px-5 py-3 rounded-xl shadow-lg transition"
           >
             <Send className="w-5 h-5" />
             <span>ارسال پیام</span>

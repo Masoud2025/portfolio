@@ -46,8 +46,8 @@ export default function MainContent() {
                 px-5 py-2 rounded-t-lg text-lg transition-all
                 ${
                   activeTab === index
-                    ? "bg-[#1F7D53] text-white"
-                    : "text-gray-400 hover:text-white"
+                    ? "bg-[#1F7D53] hover:bg-green-700  text-white"
+                    : "text-gray-400 hover:text-white  hover:cursor-pointer"
                 }
               `}
             >
@@ -65,6 +65,7 @@ export default function MainContent() {
             h-[calc(100vh-320px)]
             md:h-[520px]
             flex
+            overflow-auto scroll-smooth
           "
         >
           {tabs[activeTab].content}
