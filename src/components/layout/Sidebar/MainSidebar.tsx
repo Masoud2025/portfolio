@@ -127,7 +127,13 @@ function ContactItem({
   return <div className="flex items-center gap-2">{content}</div>;
 }
 
-function ContactSection({ isOpen, isDark }: { isOpen: boolean; isDark: boolean }) {
+function ContactSection({
+  isOpen,
+  isDark,
+}: {
+  isOpen: boolean;
+  isDark: boolean;
+}) {
   const { toggleTheme } = useTheme();
 
   return (
@@ -168,7 +174,7 @@ function ContactSection({ isOpen, isDark }: { isOpen: boolean; isDark: boolean }
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          className="grid grid-cols-1 gap-3 pt-2"
+          className="flex  flex-col gap-10 ml-30 pt-2 mt-16 "
         >
           <ContactItem
             Icon={Mail}

@@ -26,15 +26,13 @@ export default function AboutMe() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
       className={`
-        ${isLight ? "bg-white text-black" : "bg-[#0f0f0f] text-white"}
+        ${isLight ? "bg-white text-black" : " text-white"}
         sm:w-[95%] md:w-[900px]
         mx-auto mt-6 p-8 sm:p-10
-        rounded-[35px] shadow-xl
-        border border-gray-700/20
+         
+      
       `}
     >
-
-
       {/* Main Intro */}
       <motion.p
         initial={{ opacity: 0 }}
