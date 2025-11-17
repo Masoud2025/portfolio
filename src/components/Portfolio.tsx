@@ -20,7 +20,7 @@ export default function Portfolio() {
     filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
   return (
-    <div className="bg-[#1E1E1F] w-[90%] md:w-[900px] mx-auto mt-6 rounded-[30px] border-[.2px] border-white shadow-lg p-6">
+    <div className=" w-[90%] md:w-[900px] mx-auto mt-6 rounded-[30px]  p-6">
 
       {/* Desktop Filters */}
       <div className="hidden md:flex justify-center space-x-4 mb-6">

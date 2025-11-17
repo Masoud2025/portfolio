@@ -5,7 +5,7 @@ import { createContext, useState, useContext } from "react";
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("dark"); // حالت اولیه
+  const [theme, setTheme] = useState("dark"); //  default value
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");

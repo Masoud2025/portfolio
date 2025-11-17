@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Briefcase, Calendar } from "lucide-react";
 
 export default function Resume() {
-  // اطلاعات تجربه‌های تستی
+  // Temp data for test
   const experiences = [
     {
       title: "Frontend Developer",
@@ -31,7 +31,7 @@ export default function Resume() {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="bg-[#1E1E1F] w-[90%] md:w-[800px] mx-auto mt-6 rounded-[30px] border-[.2px] border-white shadow-lg p-8"
+      className=" w-[90%] md:w-[800px] mx-auto mt-6  p-8"
     >
       {/* عنوان */}
       <h2 className="text-3xl font-bold text-white mb-6 text-center">My Work Experience</h2>

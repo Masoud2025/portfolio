@@ -12,23 +12,22 @@ export default function SideBar() {
   return (
     <div
       className={`
-        w-[90%] md:w-[260px]
-        rounded-[30px] border shadow-lg
-        mx-auto mt-10
+        w-[90%] md:h-[580px] md:w-[260px]
+        rounded-[30px]  shadow-lg
+        mx-auto 
         transition-all duration-500
         relative
-
-        /* دسکتاپ → سایدبار ثابت */
-        md:fixed md:top-10 md:left-10
+        /* Desktop → fixed sidebar */
+        md:fixed md:top-10 md:left-44
 
         ${
           theme === "light"
-            ? "bg-white text-black border-gray-300"
-            : "bg-[#1E1E1F] text-white border-white"
+            ? "bg-white text-black "
+            : "bg-[#1E1E1F] text-white "
         }
       `}
     >
-      {/* تصویر پروفایل */}
+      {/* Profile image */}
       <div
         className={`h-[100px] w-[100px] mx-auto mt-8 rounded-full overflow-hidden
           ${theme === "light" ? "bg-gray-200" : "bg-[#373738]"}`}
@@ -40,7 +39,7 @@ export default function SideBar() {
         />
       </div>
 
-      {/* نام و شغل */}
+      {/* Name and job title */}
       <div className="flex flex-col items-center mt-4">
         <h1 className="font-black text-3xl">Masoud Jafari</h1>
 
@@ -54,7 +53,7 @@ export default function SideBar() {
         </h1>
       </div>
 
-      {/* دکمه باز/بسته موبایل */}
+      {/* Mobile open/close button */}
       <button
         onClick={() => setOpen(!open)}
         className="md:hidden mx-auto mt-3 flex justify-center"
@@ -70,7 +69,7 @@ export default function SideBar() {
         </div>
       </button>
 
-      {/* اطلاعات — موبایل: باز/بسته — دسکتاپ: همیشه باز */}
+      {/* Sidebar info */}
       <div
         className={`
           overflow-hidden transition-all duration-700

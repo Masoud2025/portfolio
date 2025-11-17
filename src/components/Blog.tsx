@@ -34,7 +34,7 @@ export default function Blog() {
   ];
 
   return (
-    <div className="bg-[#1E1E1F] w-[90%] md:w-[900px] mx-auto mt-6 rounded-[30px] border-[.2px] border-white shadow-lg p-6">
+    <div className=" w-[90%] md:w-[900px] mx-auto mt-6 rounded-[30px]  p-6">
       <h2 className="text-3xl font-bold text-white mb-6 text-center">Blog</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
