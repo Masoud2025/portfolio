@@ -15,3 +15,14 @@ body {
   }
 }
 
+/* Main content component */
+@media (min-width: 1200px) and (max-width: 1300px) {
+  .responsiveFixer {
+    margin-left: 36%;
+  }
+}
+@media (min-width: 1301px) and (max-width: 1500px) {
+  .responsiveFixer {
+    margin-left: 36%;
+  }
+}

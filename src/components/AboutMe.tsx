@@ -13,10 +13,10 @@ export default function AboutMe() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       className="
-        w-[90%] sm:w-[95%] md:w-[800px] 
+         sm:w-[95%] md:w-[800px] 
         mx-auto mt-4 
         rounded-[30px] 
-        p-4 sm:p-6 md:p-8
+  
       "
     >
       {/* Title */}
@@ -26,7 +26,7 @@ export default function AboutMe() {
         }
         `}
       >
-        About Me 
+        bout
       </h2>
 
       {/* Introduction */}
@@ -41,35 +41,6 @@ export default function AboutMe() {
         love learning new things and solving challenging problems. Here’s some
         placeholder info for testing.
       </motion.p>
-
-      {/* Contact Info */}
-      <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
-        className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6"
-      >
-        <div className="flex items-center text-white space-x-2">
-          <Mail size={20} />
-          <span className="text-sm sm:text-base">example@mail.com</span>
-        </div>
-        <div className="flex items-center text-white space-x-2">
-          <Phone size={20} />
-          <span className="text-sm sm:text-base">+1 234 567 890</span>
-        </div>
-        <div className="flex items-center text-white space-x-2">
-          <MapPin size={20} />
-          <span className="text-sm sm:text-base">Toronto, Canada</span>
-        </div>
-        <div className="flex items-center text-white space-x-2">
-          <Github size={20} />
-          <span className="text-sm sm:text-base">github.com/example</span>
-        </div>
-        <div className="flex items-center text-white space-x-2">
-          <Linkedin size={20} />
-          <span className="text-sm sm:text-base">linkedin.com/in/example</span>
-        </div>
-      </motion.div>
 
       {/* Skills */}
       <motion.div

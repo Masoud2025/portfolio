@@ -6,6 +6,7 @@ import Portfolio from "../Portfolio";
 import Blog from "../Blog";
 import Contact from "../ui/Contact";
 import { useTheme } from "../ThemeContext";
+import "../../app/globals.css";
 
 export default function MainContent() {
   const [activeTab, setActiveTab] = useState(0);
@@ -14,59 +15,56 @@ export default function MainContent() {
   const tabs = [
     { title: "About", content: <AboutMe /> },
     { title: "Resume", content: <Resume /> },
-    { title: "Portfolio", content: <Portfolio /> },
+    { title: "PROJECTS", content: <Portfolio /> },
     { title: "Blog", content: <Blog /> },
     { title: "Contact", content: <Contact /> },
   ];
 
   return (
-    <div className="w-full overflow-x-hidden">
-      {/* Main content wrapper */}
+    <div className="w-full flex justify-center">
       <div
         className={`
-          max-w-[600px] 
-          w-full 
-          mt-8 
-          rounded-[30px] 
-          transition-all duration-500 ease-in-out
+          w-full max-w-[700px]
+          mt-6 md:mt-0
+          rounded-[30px]
+          transition-all duration-500
           p-4 sm:p-6 lg:p-10
-          md:ml-[380px]  /* Space for fixed sidebar on desktop */
-
           ${
             theme === "light"
-              ? "bg-white text-black border-gray-300"
-              : "bg-[#1E1E1F] text-white border-white"
+              ? "bg-white text-black"
+              : "bg-[#111111] text-white"
           }
         `}
       >
-        {/* Tabs for desktop/tablet */}
+        {/* Desktop Tabs */}
         <div className="hidden md:flex justify-center space-x-6 border-b border-gray-700 pb-3 mb-5">
           {tabs.map((tab, index) => (
             <button
               key={index}
               onClick={() => setActiveTab(index)}
-              className={`px-5 py-2 rounded-t-lg text-lg transition-all 
+              className={`
+                px-5 py-2 rounded-t-lg text-lg transition-all
                 ${
                   activeTab === index
-                    ? "bg-[#2F6D4D] text-white"
+                    ? "bg-[#1F7D53] text-white"
                     : "text-gray-400 hover:text-white"
-                }`}
+                }
+              `}
             >
               {tab.title}
             </button>
           ))}
         </div>
 
-        {/* Active tab content */}
+        {/* Content */}
         <div
           className="
-             rounded-lg 
+            rounded-lg
             transition-all duration-500
-             hide-scroll
-            h-[450px] md:h-[520px]
+            hide-scroll
+            h-[calc(100vh-320px)]
+            md:h-[520px]
             flex
-            overflow-auto 
-            scroll-smooth
           "
         >
           {tabs[activeTab].content}
@@ -78,12 +76,14 @@ export default function MainContent() {
             <button
               key={index}
               onClick={() => setActiveTab(index)}
-              className={`flex-1 py-2 transition-all text-sm
+              className={`
+                flex-1 py-2 transition-all text-sm
                 ${
                   activeTab === index
                     ? "bg-[#2F6D4D] text-white rounded-t-lg"
                     : "text-gray-400"
-                }`}
+                }
+              `}
             >
               {tab.title}
             </button>

@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div>
       <ThemeProvider>
-        <div className="relative">
+        <div className="w-full min-h-screen md:grid md:grid-cols-[260px_auto] gap-6  md:px-36 pt-6">
           <SideBar />
           <MainContent />
         </div>
