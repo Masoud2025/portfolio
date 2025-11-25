@@ -1,7 +1,7 @@
+import { ThemeProvider } from "@/providers/ThemeProvider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/providers/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,9 +24,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" >
+    <html lang="en">
+      <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600;700&display=swap"
+        rel="stylesheet"
+      />
+
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased  bg-[#F1F1F1]`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>
