@@ -1,9 +1,9 @@
 "use client";
 
-import { JSX, useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import itguy from "../../../public/ITGUY-removebg-preview.png";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { JSX, useEffect, useRef, useState } from "react";
+import itguy from "../../../public/ITGUY-removebg-preview.png";
 
 const codeSnippets = [
   { text: "<h1>Hello</h1>", color: "#e06c75" },
@@ -16,7 +16,7 @@ const codeSnippets = [
   { text: "let arr = [1,2,3];", color: "#c678dd" },
 ];
 
-export default function Hero(): JSX.Element {
+export default function ItGuy(): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
   const [radius, setRadius] = useState(220);
 
@@ -71,7 +71,7 @@ export default function Hero(): JSX.Element {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5, ease: "easeOut" }}
-      className="relative flex flex-col justify-center items-center min-h-screen w-full overflow-hidden px-4 sm:px-6 lg:px-8 perspective-[1200px]"
+      className="relative flex flex-col justify-center items-center min-h-screen w-full overflow-hidden px-4 sm:px-6 lg:px-8 perspective-[1200px] mt-[-29rem]"
     >
       {/* Background Text */}
       <motion.h1
@@ -87,7 +87,6 @@ export default function Hero(): JSX.Element {
 
       {/* Main Container */}
       <div className="relative flex justify-center items-end w-full max-w-7xl h-full">
-
         {/* IT Guy Image */}
         <motion.div
           initial={{ opacity: 0, y: 60, scale: 0.9, filter: "blur(8px)" }}
@@ -114,7 +113,7 @@ export default function Hero(): JSX.Element {
           transition={{ duration: 1.2, ease: "easeOut", delay: 1 }}
           ref={containerRef}
           className="
-            absolute top-[-5%] left-[44%] sm:top-[1%] md:top-[1%] 
+            absolute top-[-5%] left-[46%] sm:top-[1%] md:top-[40%] 
             -translate-x-1/2 w-0 h-0 pointer-events-none z-30"
         >
           {codeSnippets.map((snippet, idx) => (

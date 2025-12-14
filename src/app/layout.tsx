@@ -29,9 +29,14 @@ export default function RootLayout({
         href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600;700&display=swap"
         rel="stylesheet"
       />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;600;700&display=swap"
+        rel="stylesheet"
+      />
 
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased  bg-[#F1F1F1]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased  bg-[#f1f1f1]`}
+        style={{ fontFamily: "'Baloo Bhaijaan 2', sans-serif" }}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>
