@@ -71,7 +71,7 @@ export default function ItGuy(): JSX.Element {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5, ease: "easeOut" }}
-      className="relative flex flex-col justify-center items-center min-h-screen w-full overflow-hidden px-4 sm:px-6 lg:px-8 perspective-[1200px] mt-[-29rem]"
+      className="relative flex flex-col justify-center items-center min-h-screen w-full overflow-hidden px-4 sm:px-6 lg:px-8 perspective-[1200px] "
     >
       {/* Background Text */}
       <motion.h1
@@ -88,23 +88,26 @@ export default function ItGuy(): JSX.Element {
       {/* Main Container */}
       <div className="relative flex justify-center items-end w-full max-w-7xl h-full">
         {/* IT Guy Image */}
-        <motion.div
-          initial={{ opacity: 0, y: 60, scale: 0.9, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-          transition={{ duration: 1.4, ease: "easeOut", delay: 0.5 }}
-          className="relative md:mb-36  
-          w-[400px] h-[550px] sm:w-[400px] sm:h-[400px] 
-          md:w-[550px] md:h-[550px] 
-          lg:w-[700px] lg:h-[700px] 
-          xl:w-[800px] xl:h-[800px]"
-        >
-          <Image
-            src={itguy}
-            alt="Masoud"
-            fill
-            className="object-contain object-bottom relative z-20"
-          />
-        </motion.div>
+       <motion.div
+  initial={{ opacity: 0, y: 60, scale: 0.9, filter: "blur(8px)" }}
+  animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+  transition={{ duration: 1.4, ease: "easeOut", delay: 0.5 }}
+  className="
+    relative md:mb-36
+    w-[400px] h-[550px]
+    sm:w-[400px] sm:h-[400px]
+    md:w-[550px] md:h-[550px]
+    lg:w-[700px] lg:h-[700px]
+    xl:w-[800px] xl:h-[800px]
+  "
+>
+  <Image
+    src={itguy}
+    alt="Masoud"
+    width={270}
+    className="absolute md:bottom-[6em] left-1/2 -translate-x-1/2 object-contain object-bottom z-20"
+  />
+</motion.div>
 
         {/* Orbiting Code */}
         <motion.div
@@ -113,7 +116,7 @@ export default function ItGuy(): JSX.Element {
           transition={{ duration: 1.2, ease: "easeOut", delay: 1 }}
           ref={containerRef}
           className="
-            absolute top-[-5%] left-[46%] sm:top-[1%] md:top-[40%] 
+            absolute top-[-5%] left-[46%] sm:top-[1%] md:top-[15%] 
             -translate-x-1/2 w-0 h-0 pointer-events-none z-30"
         >
           {codeSnippets.map((snippet, idx) => (

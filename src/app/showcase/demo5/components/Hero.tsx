@@ -1,63 +1,167 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// app/showcase/demo5/components/Hero.tsx
 "use client";
 
-import { JSX } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import top_flash from "../assets/heading-svg.svg";
-import shape_for_mark_heading_text_svg from "../assets/heading-svg2.svg";
+import React, { useEffect, useRef } from "react";
 
-export default function Hero(): JSX.Element {
+const Hero: React.FC = () => {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
+  useEffect(() => {
+    let fluid: any | null = null;
+    let cleanupEvents: (() => void) | undefined;
+    let autoTimer: number | null = null;
+
+    const setup = async () => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+
+      const module = await import("webgl-fluid");
+      const WebGLFluid = module.default;
+
+      const resize = () => {
+        if (!canvas) return;
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.floor(window.innerWidth * dpr);
+        canvas.height = Math.floor(window.innerHeight * dpr);
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+      };
+      resize();
+
+      // ساخت شبیه‌ساز
+      fluid = WebGLFluid(canvas, {
+        IMMEDIATE: true,
+        TRANSPARENT: true,
+        COLORFUL: true,
+
+        // برای اینکه رنگ/جریان دیرتر محو شود:
+        DENSITY_DISSIPATION: 0.01,
+        VELOCITY_DISSIPATION: 0.01,
+
+        PRESSURE: 0.9,
+        CURL: 15,
+        SPLAT_RADIUS: 0.4,
+
+        BLOOM: true,
+        BLOOM_INTENSITY: 1.4,
+        SUNRAYS: true,
+        SUNRAYS_WEIGHT: 1.0,
+
+        BACK_COLOR: "#020617",
+
+        // تعامل کاربر هنوز کار می‌کند، ولی ما auto-splat هم اضافه می‌کنیم
+        TRIGGER: "hover",
+      });
+
+      // تعامل با ماوس
+      const handleMove = (e: MouseEvent) => {
+        if (!canvas || !fluid) return;
+
+        const rect = canvas.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = 1 - (e.clientY - rect.top) / rect.height;
+
+        const dx = (e.movementX || 0) * 0.005;
+        const dy = (e.movementY || 0) * -0.005;
+
+        const r = 0.2 + Math.random() * 0.4;
+        const g = 0.3 + Math.random() * 0.4;
+        const b = 0.7 + Math.random() * 0.3;
+
+        // @ts-ignore
+        if (typeof fluid.splat === "function") {
+          // @ts-ignore
+          fluid.splat(x, y, dx, dy, [r, g, b]);
+        }
+      };
+
+      const handleEnter = () => {
+        document.body.style.cursor = "crosshair";
+      };
+
+      const handleLeave = () => {
+        document.body.style.cursor = "default";
+      };
+
+      canvas.addEventListener("mousemove", handleMove);
+      canvas.addEventListener("mouseenter", handleEnter);
+      canvas.addEventListener("mouseleave", handleLeave);
+      window.addEventListener("resize", resize);
+
+      // Auto splat: همیشه در حال جریان باشد حتی بدون ماوس
+      autoTimer = window.setInterval(() => {
+        if (!fluid) return;
+
+        // @ts-ignore
+        if (typeof fluid.splat !== "function") return;
+
+        const x = Math.random();
+        const y = Math.random();
+
+        // حرکت کوچک ولی دائمی
+        const dx = (Math.random() - 0.5) * 0.4;
+        const dy = (Math.random() - 0.5) * 0.4;
+
+        const color: [number, number, number] = [
+          0.2 + Math.random() * 0.8,
+          0.2 + Math.random() * 0.8,
+          0.2 + Math.random() * 0.8,
+        ];
+
+        // @ts-ignore
+        fluid.splat(x, y, dx, dy, color);
+      }, 140);
+
+      // cleanup listeners
+      cleanupEvents = () => {
+        canvas.removeEventListener("mousemove", handleMove);
+        canvas.removeEventListener("mouseenter", handleEnter);
+        canvas.removeEventListener("mouseleave", handleLeave);
+        window.removeEventListener("resize", resize);
+      };
+    };
+
+    setup();
+
+    return () => {
+      if (cleanupEvents) cleanupEvents();
+
+      if (autoTimer !== null) {
+        window.clearInterval(autoTimer);
+        autoTimer = null;
+      }
+
+      if (fluid && typeof fluid.destroy === "function") {
+        fluid.destroy();
+      }
+      fluid = null;
+
+      // اگر صفحه را ترک کردید کرسر به حالت عادی برگردد
+      document.body.style.cursor = "default";
+    };
+  }, []);
+
   return (
-    <section className="relative flex flex-col items-center justify-center text-center overflow-hidden min-h-screen ">
-      {/* Background Decorative Circles */}
-      <div className="absolute -left-24 top-24 w-96 h-96 bg-pink-300/40 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute left-[20%] bottom-10 w-[28rem] h-[28rem] bg-blue-300/40 rounded-full blur-3xl animate-pulse delay-200" />
-      <div className="absolute right-10 top-32 w-[22rem] h-[22rem] bg-green-300/40 rounded-full blur-3xl animate-pulse delay-500" />
-
-      {/* Top SVGs */}
-      <Image
-        alt=""
-        src={top_flash}
-        width={180}
-        className="absolute right-[12%] top-[14%] opacity-80"
-      />
-      <Image
-        alt=""
-        src={shape_for_mark_heading_text_svg}
-        width={120}
-        className="absolute left-[20%] top-[22%] opacity-80"
-      />
-
-      {/* Main Content */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="z-10 px-6 sm:px-0"
-      >
-        <h1 className="text-[52px] sm:text-[70px] font-extrabold leading-tight text-gray-900 drop-shadow-sm">
-          آموزش آنلاین{" "}
-          <span className="bg-gradient-to-r from-[#ff6b6b] to-[#ffb347] text-white px-6 py-2 rounded-3xl shadow-lg">
-            آسان
-          </span>
-          <br />
-          در هرجا و هرزمان
-        </h1>
-
-        <p className="mt-5 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          یه راه تو زندگی داریم: زندگی رو انقدر با چیزهای خوب پر کنیم که وقت
-          واسه چیزهای بد نمونه.
-        </p>
-        <sub className="mt-2 block text-gray-500 text-sm">— فرهنگ هلاکویی</sub>
-
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="mt-10 bg-[#543CDF] text-white px-8 py-4 rounded-3xl font-semibold shadow-lg hover:bg-[#6c52ff] transition-colors duration-300"
-        >
-          از امروز یادگیری را شروع کنید
-        </motion.button>
-      </motion.div>
+    <section className="relative min-h-screen w-full overflow-hidden bg-slate-950 text-white">
+      <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-950/30 via-slate-950/60 to-slate-950/90" />
+      <div className="relative z-10 flex min-h-screen items-center justify-center px-4 md:px-6">
+        <div className="max-w-3xl text-center text-right">
+          <p className="text-xs font-light tracking-[0.2em] text-sky-300/80">
+            FRONTEND EXPERIENCE
+          </p>
+          <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white drop-shadow-lg md:text-6xl">
+            حرکت رنگ ها
+          </h1>
+          <p className="mt-5 text-sm text-slate-200/85 md:text-base">
+            ماوس را روی صفحه حرکت بده؛ مسیر حرکتت با لایه‌های سیال و رنگی دنبال
+            می‌شود و محو نمی‌شود.
+          </p>
+        </div>
+      </div>
     </section>
   );
-}
+};
+
+export default Hero;
